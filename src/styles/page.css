@@ -1,0 +1,12 @@
+.page {
+    background-color: rgb(79, 79, 163);
+    height: 100vh;
+}
+
+.page .content-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}

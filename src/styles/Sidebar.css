@@ -22,7 +22,7 @@
     animation: sidebarAnimation 0.3s ease-in-out;
     background-color: rgba(0, 0, 0, 0.744);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 
 
@@ -57,7 +57,6 @@
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.744);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     color: #eee;
     display: flex;

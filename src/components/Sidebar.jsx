@@ -22,7 +22,7 @@ function Sidebar() {
               <Link href="/about"className="link">About</Link>
             </li>
             <li>
-              <Link href="/blog"className="link">Blog</Link>
+              <Link href="/presioname"className="link">Presioname</Link>
             </li>
           </ul>
         </div>
