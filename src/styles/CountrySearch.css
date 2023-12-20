@@ -64,7 +64,6 @@
     
   width: calc(100% - 2rem);
   height: 3rem;
-  font-size: 19px;
   padding-left: 10%;
   background-color: #c9cdd000;
   outline: none;
@@ -137,4 +136,10 @@
   .title-container {
     font-size: 1.2rem;
   }
+  
+.searchInput {
+
+    font-size: 1.2rem;
+  }
+  
 }
