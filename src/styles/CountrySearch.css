@@ -13,8 +13,8 @@
 
   background: linear-gradient(
     180deg,
-    rgba(19, 4, 77, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
+    rgb(8, 2, 33) 0%,
+    rgb(17, 17, 129) 30%,
     rgba(163, 179, 182, 1) 100%
   );
   min-height: 125vh;
@@ -34,6 +34,7 @@
   color: #000000;
   text-align: left;
   font-weight: 600;
+  color: aliceblue;
 }
 
 .searchContainer {
@@ -51,7 +52,8 @@
   border: 2px solid #62758299;
   border-radius: 40px;
   box-shadow: 0 0 10px 0 #62758299;
-  width: 90%;
+  background-color: #fffffff3;
+  width: 99%;
   max-width: 45rem;
   height: 4rem;
 
@@ -59,11 +61,12 @@
 }
 
 .searchInput {
+    
   width: calc(100% - 2rem);
   height: 3rem;
   font-size: 19px;
   padding-left: 10%;
-  background-color: #3498db00;
+  background-color: #c9cdd000;
   outline: none;
   font-size: 1.6rem;
   border: none;
@@ -122,4 +125,15 @@
 
 
 .pagination{
+}
+
+
+/* si está en celular cambiar el container title*/
+@media (max-width: 768px) {
+    .container {
+
+    }
+  .title-container {
+    font-size: 1.2rem;
+  }
 }

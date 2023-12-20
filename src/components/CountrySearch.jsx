@@ -67,6 +67,7 @@ function CountrySearch() {
     } catch (error) {
       console.log(error);
     }
+    setCurrentPage(1);
   }, [countries, searchTerm]);
 
   useEffect(() => {
@@ -127,7 +128,7 @@ function CountrySearch() {
       <div className="container">
         <div className="title-container">
           <h1>
-            Paises <br /> en tu palma{" "}
+            Paises <br /> de este Mundo{" "}
           </h1>
         </div>
         <div className="searchContainer">
@@ -141,18 +142,25 @@ function CountrySearch() {
             />
             <FiSearch className="searchIcon" />
           </div>
-          <div className="pagination">
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
-              Prev
-            </button>
-            <span>{currentPage}</span>
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage * countriesPerPage >= countries.length}
-            >
-              Next
-            </button>
-          </div>
+
+          {/* si filteredcOUNTRIES EXISTE ENTONCES MOSTRAR LOS BOTONES*/ 
+          filteredCountries.length > 0 && (
+            <div className="pagination">
+              <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                Prev
+              </button>
+              <span>{currentPage}</span>
+              <button
+                onClick={handleNextPage}
+                disabled={currentPage * countriesPerPage >= filteredCountries.length}
+              >
+                Next
+              </button>
+            </div>
+          )}
+          
+
+          
           <ul className="countryList">
             {countriesInPage.map((country) => (
               <li key={country.code}>
@@ -175,7 +183,6 @@ function CountrySearch() {
               </li>
             ))}
           </ul>
-
         </div>
       </div>
     </>
