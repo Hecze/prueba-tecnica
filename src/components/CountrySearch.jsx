@@ -4,6 +4,8 @@ import client from "../lib/apolloClient";
 import { FiSearch } from "react-icons/fi";
 import "@/styles/CountrySearch.css";
 import Image from "next/image";
+import CountryList from "./CountryList";
+import CountryInfo from "./CountryInfo";
 
 const LIST_COUNTRIES = gql`
   {
@@ -18,9 +20,11 @@ const LIST_COUNTRIES = gql`
         languages {
           name
         }
-        states {
-          code
+        subdivisions{
+          name
         }
+
+        
       }
     }
   }
@@ -143,46 +147,29 @@ function CountrySearch() {
             <FiSearch className="searchIcon" />
           </div>
 
-          {/* si filteredcOUNTRIES EXISTE ENTONCES MOSTRAR LOS BOTONES*/ 
-          filteredCountries.length > 0 && (
-            <div className="pagination">
-              <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                Prev
-              </button>
-              <span>{currentPage}</span>
-              <button
-                onClick={handleNextPage}
-                disabled={currentPage * countriesPerPage >= filteredCountries.length}
-              >
-                Next
-              </button>
-            </div>
-          )}
-          
+          {
+            /* si filteredcOUNTRIES EXISTE ENTONCES MOSTRAR LOS BOTONES*/
+            filteredCountries.length > 0 && (
+              <div className="pagination">
+                <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                  Prev
+                </button>
+                <span>{currentPage}</span>
+                <button
+                  onClick={handleNextPage}
+                  disabled={
+                    currentPage * countriesPerPage >= filteredCountries.length
+                  }
+                >
+                  Next
+                </button>
+              </div>
+            )
+          }
 
-          
-          <ul className="countryList">
-            {countriesInPage.map((country) => (
-              <li key={country.code}>
-                {" "}
-                <div className="countryCard">
-                  <div className="">
-                    <Image
-                      src={country.image}
-                      alt={country.name}
-                      width={400}
-                      height={300}
-                      className="countryImg"
-                    />
-                  </div>
-                  <div className="countryInfo">
-                    <h2>{country.name}</h2>
-                    <p>{country.continent}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <CountryList countriesInPage={countriesInPage} />
+
+
         </div>
       </div>
     </>

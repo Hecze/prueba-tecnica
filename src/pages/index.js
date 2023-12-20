@@ -1,12 +1,12 @@
 import React from "react";
 import CountrySelect from "../components/CountrySelect";
-import Navbar from "@/components/navbar";
 import CountrySearch from "@/components/CountrySearch.jsx";
+import Sidebar from "@/components/Sidebar";
 
 function Home() {
   return (
     <>
-      <Navbar />
+      <Sidebar />
 
       <CountrySearch />
     </>

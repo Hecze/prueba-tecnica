@@ -13,9 +13,9 @@
 
   background: linear-gradient(
     180deg,
-    rgb(8, 2, 33) 0%,
-    rgb(17, 17, 129) 30%,
-    rgba(163, 179, 182, 1) 100%
+    rgb(5, 3, 13) 0%,
+    rgb(33, 23, 96) 40%,
+    rgb(153, 187, 198) 100%
   );
   min-height: 125vh;
 }
@@ -99,7 +99,7 @@
 }
 
 .countryList li {
-  margin: 3rem 0px;
+  margin: 0rem 0px;
 }
 
 /* countries  */
@@ -125,6 +125,7 @@
 
 
 .pagination{
+    margin-bottom: 4rem;
 }
 
 
