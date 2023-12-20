@@ -149,6 +149,9 @@
   display: flex ;
   flex-wrap: wrap;
   justify-content: center;
+  width: 70%;
+  margin-bottom: 4rem;
+
   gap: 2rem;
 }
 
@@ -163,3 +166,30 @@
   transition: transform 0.5s ease-in-out;
   filter: brightness(0.92);
 }
+
+
+
+/* ...existing code... */
+
+/* si está en celular cambiar el container title*/
+@media (max-width: 768px) {
+  .container {
+    /* ...existing code... */
+  }
+  .title-container {
+    /* ...existing code... */
+  }
+  .searchInput {
+    /* ...existing code... */
+  }
+  .continents {
+    gap: 0rem; /* reduce the gap between continents */
+    width: 100%;
+  }
+  .continent .continent-img{
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* ...existing code... */

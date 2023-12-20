@@ -64,8 +64,10 @@ function CountrySearch() {
   useEffect(() => {
     try {
       setFilteredCountries(
-        countries.filter((country) =>
-          country.name.toLowerCase().startsWith(searchTerm.toLowerCase()) && country.continent === continentSelected
+        countries.filter(
+          (country) =>
+            country.name.toLowerCase().startsWith(searchTerm.toLowerCase()) &&
+            country.continent === continentSelected
         )
       );
     } catch (error) {
@@ -148,28 +150,83 @@ function CountrySearch() {
             <FiSearch className="searchIcon" />
           </div>
 
-          {showContinent && (          <div className="continents" onClick={() => setShowContinent(false)}>
-            <div className="continent" onClick={() => (setContinentSelected("North America"))}>
-              <Image src="/norteamerica.png" height="300" width="350" alt="" />
-              
+          {showContinent && (
+            <div className="continents" onClick={() => setShowContinent(false)}>
+              <div
+                className="continent"
+                onClick={() => setContinentSelected("North America")}
+              >
+                <Image
+                  src="/norteamerica.png"
+                  height="300"
+                  width="350"
+                  alt=""
+                  className="continent-img"
+                />
+              </div>
+              <div
+                className="continent"
+                onClick={() => setContinentSelected("South America")}
+              >
+                <Image
+                  src="/suramerica.png"
+                  height="300"
+                  width="350"
+                  alt=""
+                  className="continent-img"
+                />
+              </div>
+              <div
+                className="continent"
+                onClick={() => setContinentSelected("Oceania")}
+              >
+                <Image
+                  src="/oceania.png"
+                  height="300"
+                  width="350"
+                  alt=""
+                  className="continent-img"
+                />
+              </div>
+              <div
+                className="continent"
+                onClick={() => setContinentSelected("Europe")}
+              >
+                <Image
+                  src="/europa.png"
+                  height="300"
+                  width="350"
+                  alt=""
+                  className="continent-img"
 
+                />
+              </div>
+              <div
+                className="continent"
+                onClick={() => setContinentSelected("Africa")}
+              >
+                <Image
+                  src="/africa.png"
+                  height="300"
+                  width="350"
+                  alt=""
+                  className="continent-img"
+                />
+              </div>
+              <div
+                className="continent"
+                onClick={() => setContinentSelected("Asia")}
+              >
+                <Image
+                  src="/asia.png"
+                  height="300"
+                  width="350"
+                  alt=""
+                  className="continent-img"
+                />
+              </div>
             </div>
-            <div className="continent"  onClick={() => (setContinentSelected("South America"))}>
-              <Image src="/suramerica.png"   height="300" width="350"alt="" />
-            </div>
-            <div className="continent" onClick={() => (setContinentSelected("Oceania"))}>
-              <Image src="/oceania.png"  height="300" width="350" alt="" />
-            </div>
-            <div className="continent" onClick={() => (setContinentSelected("Europe"))}>
-              <Image src="/europa.png"   height="300" width="350"alt="" />
-            </div>
-            <div className="continent" onClick={() => (setContinentSelected("Africa"))}>
-              <Image src="/africa.png"  height="300" width="350" alt="" />
-            </div>
-            <div className="continent" onClick={() => (setContinentSelected("Asia"))}>
-              <Image src="/asia.png"  height="300" width="350" alt="" />
-            </div>
-          </div>)}
+          )}
 
           {
             /* si filteredcOUNTRIES EXISTE ENTONCES MOSTRAR LOS BOTONES*/
