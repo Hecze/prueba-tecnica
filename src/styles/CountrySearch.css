@@ -92,10 +92,11 @@
   flex-wrap: wrap;
   gap: 5rem;
   justify-content: center;
+
 }
 
 .countryCard {
-  margin-bottom: -15.55rem;
+    height: 300px;
 }
 
 .countryList li {
