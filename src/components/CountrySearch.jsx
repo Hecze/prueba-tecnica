@@ -20,11 +20,9 @@ const LIST_COUNTRIES = gql`
         languages {
           name
         }
-        subdivisions{
+        subdivisions {
           name
         }
-
-        
       }
     }
   }
@@ -37,6 +35,8 @@ function CountrySearch() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredCountries, setFilteredCountries] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   const [countriesInPage, setCountriesInPage] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  const [continentSelected, setContinentSelected] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  const [showContinent, setShowContinent] = useState(false); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   const countriesPerPage = 8;
 
   const { data, loading, error } = useQuery(LIST_COUNTRIES, { client });
@@ -65,14 +65,14 @@ function CountrySearch() {
     try {
       setFilteredCountries(
         countries.filter((country) =>
-          country.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+          country.name.toLowerCase().startsWith(searchTerm.toLowerCase()) && country.continent === continentSelected
         )
       );
     } catch (error) {
       console.log(error);
     }
     setCurrentPage(1);
-  }, [countries, searchTerm]);
+  }, [countries, searchTerm, continentSelected]);
 
   useEffect(() => {
     const indexOfLastCountry = currentPage * countriesPerPage;
@@ -142,10 +142,34 @@ function CountrySearch() {
               placeholder="Search countries..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              onClick={() => setShowContinent(true)}
               className="searchInput"
             />
             <FiSearch className="searchIcon" />
           </div>
+
+          {showContinent && (          <div className="continents" onClick={() => setShowContinent(false)}>
+            <div className="continent" onClick={() => (setContinentSelected("North America"))}>
+              <Image src="/norteamerica.png" height="300" width="350" alt="" />
+              
+
+            </div>
+            <div className="continent"  onClick={() => (setContinentSelected("South America"))}>
+              <Image src="/suramerica.png"   height="300" width="350"alt="" />
+            </div>
+            <div className="continent" onClick={() => (setContinentSelected("Oceania"))}>
+              <Image src="/oceania.png"  height="300" width="350" alt="" />
+            </div>
+            <div className="continent" onClick={() => (setContinentSelected("Europe"))}>
+              <Image src="/europa.png"   height="300" width="350"alt="" />
+            </div>
+            <div className="continent" onClick={() => (setContinentSelected("Africa"))}>
+              <Image src="/africa.png"  height="300" width="350" alt="" />
+            </div>
+            <div className="continent" onClick={() => (setContinentSelected("Asia"))}>
+              <Image src="/asia.png"  height="300" width="350" alt="" />
+            </div>
+          </div>)}
 
           {
             /* si filteredcOUNTRIES EXISTE ENTONCES MOSTRAR LOS BOTONES*/
@@ -168,8 +192,6 @@ function CountrySearch() {
           }
 
           <CountryList countriesInPage={countriesInPage} />
-
-
         </div>
       </div>
     </>
