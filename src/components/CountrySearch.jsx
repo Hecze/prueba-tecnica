@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import "@/styles/CountrySearch.css";
 import Image from "next/image";
 import CountryList from "./CountryList";
+import { BsTriangleFill } from "react-icons/bs";
 import CountryInfo from "./CountryInfo";
 
 const LIST_COUNTRIES = gql`
@@ -61,6 +62,7 @@ function CountrySearch() {
     console.log(countries);
   }, [data]);
 
+
   useEffect(() => {
     try {
       setFilteredCountries(
@@ -88,6 +90,7 @@ function CountrySearch() {
     return <p>{error ? error.message : "Loading..."}</p>;
   }
 
+  
   async function fetchCountryImage(countryName) {
     const apiKey = "41356005-0776f7130e49698041c7af2f1"; // Reemplaza con tu propia API Key de Pixabay
     const searchTermCity = encodeURIComponent(`${countryName} city`);
@@ -131,13 +134,13 @@ function CountrySearch() {
 
   return (
     <>
-      <div className="container">
+      <div className="container" onClick={() => {if(showContinent === true) setShowContinent(false)}}>
         <div className="title-container">
           <h1>
             Paises <br /> de este Mundo{" "}
           </h1>
         </div>
-        <div className="searchContainer">
+        <div className="searchContainer" >
           <div className="searchWrapper">
             <input
               type="text"
@@ -151,7 +154,8 @@ function CountrySearch() {
           </div>
 
           {showContinent && (
-            <div className="continents" onClick={() => setShowContinent(false)}>
+            <div className="continents">
+              <BsTriangleFill className="triangle" />
               <div
                 className="continent"
                 onClick={() => setContinentSelected("North America")}
@@ -198,7 +202,6 @@ function CountrySearch() {
                   width="350"
                   alt=""
                   className="continent-img"
-
                 />
               </div>
               <div
@@ -247,7 +250,7 @@ function CountrySearch() {
               </div>
             )
           }
-
+        
           <CountryList countriesInPage={countriesInPage} />
         </div>
       </div>

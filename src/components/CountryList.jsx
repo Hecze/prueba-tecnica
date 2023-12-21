@@ -7,6 +7,13 @@ const CountryList = ({ countriesInPage }) => {
   const [countrySelected, setCountrySelected] = useState();
 
   useEffect(() => {
+    if(countriesInPage.length == 0) {
+      setCountrySelected(null);
+    }
+  }
+  , [countriesInPage]);
+
+  useEffect(() => {
     if (countrySelected) {
       document.getElementById("info").scrollIntoView({ behavior: "smooth" });
     }
