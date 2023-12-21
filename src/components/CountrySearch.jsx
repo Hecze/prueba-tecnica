@@ -36,7 +36,7 @@ function CountrySearch() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredCountries, setFilteredCountries] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   const [countriesInPage, setCountriesInPage] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-  const [continentSelected, setContinentSelected] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  const [continentSelected, setContinentSelected] = useState(""); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   const [showContinent, setShowContinent] = useState(false); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
   const countriesPerPage = 8;
 
@@ -65,13 +65,27 @@ function CountrySearch() {
 
   useEffect(() => {
     try {
-      setFilteredCountries(
-        countries.filter(
-          (country) =>
-            country.name.toLowerCase().startsWith(searchTerm.toLowerCase()) &&
-            country.continent === continentSelected
-        )
-      );
+
+      if (continentSelected === "") {
+        setFilteredCountries(
+          countries.filter((country) =>
+            country.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+          )
+        );
+        return;
+      }
+
+      else {
+        setFilteredCountries(
+          countries.filter(
+            (country) =>
+              country.name.toLowerCase().startsWith(searchTerm.toLowerCase()) &&
+              country.continent === continentSelected
+          )
+        );
+      }
+
+
     } catch (error) {
       console.log(error);
     }
