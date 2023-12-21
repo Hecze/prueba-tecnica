@@ -162,8 +162,14 @@ function CountrySearch() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onClick={() => setShowContinent(true)}
-              onSubmit={() => setShowContinent(false) && setSearchTerm(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setShowContinent(false);
+                  e.target.blur();
+                }
+              }}
               className="searchInput"
+
             />
             <FiSearch className="searchIcon" />
           </div>
